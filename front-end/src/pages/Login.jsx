@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import Header from "../components/header";
 import styled from "styled-components";
 import BackgroundImage from "../components/background-image";
@@ -64,9 +64,11 @@ const Login = () => {
         }
     };
 
-    onAuthStateChanged(firebaseAuth, (currentUser) => {
-        if (currentUser) navigate("/");
-    });
+    useEffect(() => {
+        onAuthStateChanged(firebaseAuth, (currentUser) => {
+            if (currentUser) navigate("/");
+        });
+    }, [navigate]);
 
     return (
         <Container>
