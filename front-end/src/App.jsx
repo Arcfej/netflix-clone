@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Netflix from "./pages/Netflix";
-import Player from "./components/player";
+import Player from "./pages/Player";
 
 const App = () => {
     return (
