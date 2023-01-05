@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
@@ -8,10 +8,29 @@ import { RiThumbUpFill, RiThumbDownFill } from "react-icons/ri";
 import { BsCheck } from "react-icons/bs";
 import { AiOutlinePlus } from "react-icons/ai";
 import { BiChevronDown } from "react-icons/bi";
+import { onAuthStateChanged } from "firebase/auth";
+import { firebaseAuth } from "../utils/firebase-config";
+import axios from "axios";
 
 const Card = ({ movieData, isLiked }) => {
     const [isHovered, setIsHovered] = useState(false);
+    const [email, setEmail] = useState(undefined);
     const navigate = useNavigate();
+
+    useEffect(() => {
+        onAuthStateChanged(firebaseAuth, (currentUser) => {
+            if (currentUser) setEmail(currentUser.email);
+            else navigate("/login");
+        });
+    }, [navigate]);
+
+    const addToList = async () => {
+        try {
+            await axios.post("http://localhost:5000/api/user/add", { email, data: movieData });
+        } catch (err) {
+            console.log(err);
+        }
+    };
 
     return (
         <Container
@@ -40,19 +59,19 @@ const Card = ({ movieData, isLiked }) => {
                                     {
                                         isLiked
                                             ? <BsCheck title="Remove From List"/>
-                                            : <AiOutlinePlus title="Add to My List"/>
+                                            : <AiOutlinePlus title="Add to My List" onClick={addToList}/>
                                     }
                                 </div>
                                 <div className="info">
                                     <BiChevronDown title="More Info"/>
                                 </div>
-                                <div className="genres flex">
-                                    <ul className="flex">
-                                        {
-                                            movieData.genres.map((genre) => <li key={genre}>{genre}</li>)
-                                        }
-                                    </ul>
-                                </div>
+                            </div>
+                            <div className="genres flex">
+                                <ul className="flex">
+                                    {
+                                        movieData.genres.map((genre) => <li key={genre}>{genre}</li>)
+                                    }
+                                </ul>
                             </div>
                         </div>
                     </div>
