@@ -14,9 +14,9 @@ const Movies = () => {
     const [isScrolled, setIsScrolled] = useState(false);
     const navigate = useNavigate();
 
-    const genresLoaded = useSelector((state) => state.netflix.genresLoaded);
-    const movies = useSelector((state) => state.netflix.movies);
-    const genres = useSelector(state => state.netflix.genres);
+    const genresLoaded = useSelector((state) => state.myflix.genresLoaded);
+    const movies = useSelector((state) => state.myflix.movies);
+    const genres = useSelector(state => state.myflix.genres);
     const dispatch = useDispatch();
 
     useEffect(() => {

@@ -8,7 +8,7 @@ const initialState = {
     genres: [],
 };
 
-export const getGenres = createAsyncThunk("netflix/genres", async() => {
+export const getGenres = createAsyncThunk("myflix/genres", async() => {
     const {
         data: { genres }
     } = await axios.get(
@@ -48,8 +48,8 @@ const getRawData = async (api, genres,paging) => {
     return moviesArray;
 };
 
-export const fetchMovies = createAsyncThunk("netflix/trending", async ({type}, thunkAPI) => {
-    const {netflix: { genres }} = thunkAPI.getState();
+export const fetchMovies = createAsyncThunk("myflix/trending", async ({type}, thunkAPI) => {
+    const {myflix: { genres }} = thunkAPI.getState();
     return getRawData(
         `${TMDB_BASE_URL}/trending/${type}/week?api_key=${api_key}`,
         genres,
@@ -58,9 +58,9 @@ export const fetchMovies = createAsyncThunk("netflix/trending", async ({type}, t
 });
 
 export const fetchDataByGenre = createAsyncThunk(
-    "netflix/moviesByGenres",
+    "myflix/moviesByGenres",
     async ({ genre, type }, thunkAPI) => {
-        const {netflix: { genres }} = thunkAPI.getState();
+        const {myflix: { genres }} = thunkAPI.getState();
         return getRawData(
             `${TMDB_BASE_URL}/discover/${type}?api_key=${api_key}&with_genres=${genre}`,
             genres
@@ -68,15 +68,23 @@ export const fetchDataByGenre = createAsyncThunk(
     });
 
 export const getUserLikedMovies = createAsyncThunk(
-    "netflix/getLiked",
+    "myflix/getLiked",
     async (email) => {
         const { data: { movies } } = await axios.get(`http://localhost:5000/api/user/liked/${email}`);
         return movies;
     }
 );
 
-const NetflixSlice = createSlice({
-    name: "Netflix",
+export const removeFromLikedMovies = createAsyncThunk(
+    "myflix/deleteLiked",
+    async ({ movieId, email }) => {
+        const { data: { movies } } = await axios.put(`http://localhost:5000/api/user/remove`, { movieId, email });
+        return movies;
+    }
+);
+
+const MyFlixSlice = createSlice({
+    name: "MyFlix",
     initialState,
     extraReducers: (builder) => {
         builder.addCase(getGenres.fulfilled,(state,action) => {
@@ -92,11 +100,14 @@ const NetflixSlice = createSlice({
         builder.addCase(getUserLikedMovies.fulfilled, (state, action) => {
             state.movies = action.payload;
         });
+        builder.addCase(removeFromLikedMovies.fulfilled, (state, action) => {
+            state.movies = action.payload;
+        });
     },
 });
 
 export const store = configureStore({
     reducer: {
-        netflix: NetflixSlice.reducer,
+        myflix: MyFlixSlice.reducer,
     },
 });

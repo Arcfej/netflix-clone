@@ -11,12 +11,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchMovies, getGenres } from "../store";
 import Slider from "../components/slider";
 
-const Netflix = () => {
+const MyFlix = () => {
     const [isScrolled, setIsScrolled] = useState(false);
     const navigate = useNavigate();
 
-    const genresLoaded = useSelector((state) => state.netflix.genresLoaded);
-    const movies = useSelector((state) => state.netflix.movies);
+    const genresLoaded = useSelector((state) => state.myflix.genresLoaded);
+    const movies = useSelector((state) => state.myflix.movies);
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -102,4 +102,4 @@ const Container = styled.div`
   }
 `;
 
-export default Netflix;
+export default MyFlix;

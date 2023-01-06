@@ -13,7 +13,7 @@ const UserLikes = () => {
     const [email, setEmail] = useState(undefined);
 
     const navigate = useNavigate();
-    const movies = useSelector((state) => state.netflix.movies);
+    const movies = useSelector((state) => state.myflix.movies);
     const dispatch = useDispatch();
 
     useEffect(() => {
