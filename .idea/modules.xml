@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/MyFlix.iml" filepath="$PROJECT_DIR$/MyFlix.iml" />
+      <module fileurl="file://$PROJECT_DIR$/UserLists-API.iml" filepath="$PROJECT_DIR$/UserLists-API.iml" />
       <module fileurl="file://$PROJECT_DIR$/front-end.iml" filepath="$PROJECT_DIR$/front-end.iml" />
       <module fileurl="file://$PROJECT_DIR$/proxy.iml" filepath="$PROJECT_DIR$/proxy.iml" />
     </modules>
