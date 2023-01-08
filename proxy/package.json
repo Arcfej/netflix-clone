@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "lint": "eslint **.js",
-    "fix": "eslint --fix *.js",
-    "test": "mocha test/*.test.js --check-leaks --timeout 5000"
+    "lint": "../node_modules/.bin/eslint **.js",
+    "fix": "../node_modules/.bin/eslint --fix *.js",
+    "test": "../node_modules/.bin/mocha proxy/test/*.test.js --check-leaks --timeout 5000"
   },
   "author": "Google LLC",
   "license": "0BSD",
