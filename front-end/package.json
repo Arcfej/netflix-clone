@@ -2,6 +2,7 @@
   "name": "front-end",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "dependencies": {
     "@firebase/auth": "^0.21.0",
     "@reduxjs/toolkit": "^1.9.0",
