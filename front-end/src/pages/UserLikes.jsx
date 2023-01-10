@@ -5,8 +5,8 @@ import { getUserLikedMovies } from "../store";
 import { onAuthStateChanged } from "firebase/auth";
 import { firebaseAuth } from "../utils/firebase-config";
 import styled from "styled-components";
-import Navbar from "../components/navbar";
-import Card from "../components/card";
+import Navbar from "../components/Navbar.jsx";
+import Card from "../components/Card.jsx";
 
 const UserLikes = () => {
     const [isScrolled, setIsScrolled] = useState(false);

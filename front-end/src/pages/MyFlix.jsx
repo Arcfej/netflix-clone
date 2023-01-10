@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react"
-import Navbar from "../components/navbar";
+import Navbar from "../components/Navbar.jsx";
 import { FaPlay, } from "react-icons/fa";
 import { AiOutlineInfoCircle } from "react-icons/ai";
-import BackgroundImage from "../components/background-image";
+import BackgroundImage from "../components/BackgroundImage.jsx";
 import backgroundImage from "../assets/home.jpg";
 import MovieLogo from "../assets/homeTitle.webp";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchMovies, getGenres } from "../store";
-import Slider from "../components/slider";
+import Slider from "../components/Slider.jsx";
 
 const MyFlix = () => {
     const [isScrolled, setIsScrolled] = useState(false);

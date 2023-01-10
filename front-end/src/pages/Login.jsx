@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"
-import Header from "../components/header";
+import Header from "../components/Header.jsx";
 import styled from "styled-components";
-import BackgroundImage from "../components/background-image";
+import BackgroundImage from "../components/BackgroundImage.jsx";
 import { signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
 import { firebaseAuth } from "../utils/firebase-config";
 import { useNavigate } from "react-router-dom";

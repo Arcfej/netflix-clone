@@ -5,10 +5,10 @@ import { fetchMovies, getGenres } from "../store";
 import { onAuthStateChanged } from "firebase/auth";
 import { firebaseAuth } from "../utils/firebase-config";
 import styled from "styled-components";
-import Navbar from "../components/navbar";
-import Slider from "../components/slider";
-import NotAvailable from "../components/notAvailable";
-import SelectGenre from "../components/selectGenre";
+import Navbar from "../components/Navbar.jsx";
+import Slider from "../components/Slider.jsx";
+import NotAvailable from "../components/NotAvailable.jsx";
+import SelectGenre from "../components/SelectGenre.jsx";
 
 const TvShows = () => {
     const [isScrolled, setIsScrolled] = useState(false);

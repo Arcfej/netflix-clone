@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import CardSlider from "./cardSlider";
+import CardSlider from "./CardSlider.jsx";
 
 const Slider = ({ movies }) => {
     const getMoviesFromRange = (from, to) => {

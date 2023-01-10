@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { firebaseAuth } from "../utils/firebase-config";
-import Logo from "./logo";
+import Logo from "./Logo.jsx";
 import { FaPowerOff, FaSearch } from "react-icons/fa";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 
