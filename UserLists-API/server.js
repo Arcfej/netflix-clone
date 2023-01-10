@@ -8,7 +8,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-mongoose.connect("mongodb://localhost:27017/MyFlix", {
+mongoose.connect("mongodb+srv://Arcfej:ZjFkykzKvQYOIYAZ@user-lists-api.9s6xmz3.mongodb.net/MyFlixUserLists", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 }).then(() => {
